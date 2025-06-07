@@ -17,7 +17,7 @@ def align():
         seq_count = request.form.get("seq_count")
         geo_div = request.form.get("geo_div") == "on"
 
-        # Şimdilik sadece işlemleri yazdırıyoruz
+        # geçici
         result_one = process_data_one(dna_type, species)
         result_two = process_data_two(seq_count, geo_div)
 
