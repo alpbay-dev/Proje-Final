@@ -7,7 +7,7 @@
   <h2 class="text-success mb-4">DNA Alignment Form</h2>
   <form method="POST" action="/align">
 
-    <!-- Collapsible DNA Type Selector -->
+    
     <div class="mb-3">
   <label for="dnaType" class="form-label">Select Genetic Code</label>
   <select class="form-select" id="dnaType" name="dna_type" required>
@@ -30,7 +30,7 @@
   </select>
 </div>
 
-    <!-- Dynamic Species Input Section -->
+    
     <div id="species-section" class="mb-3">
   <label for="species-0" class="form-label">Species Name</label>
   <input type="text" name="species[]" class="form-control mb-2" id="species-0" placeholder="Add species name" required>
@@ -38,13 +38,13 @@
 
     <button type="button" class="btn btn-sm btn-outline-success mb-4" onclick="addSpecies()">Add Species</button>
 
-    <!-- Sequences Per Species -->
+    
     <div class="mb-3">
       <label for="sequenceCount" class="form-label">Number of sequences per species</label>
       <input type="number" class="form-control" id="sequenceCount" name="sequence_count" min="1" required>
     </div>
 
-    <!-- Geographic Diversity Checkbox -->
+    
     <div class="form-check mb-4">
       <input class="form-check-input" type="checkbox" id="geoDiversity" name="geographic_diversity">
       <label class="form-check-label" for="geoDiversity">
@@ -52,12 +52,12 @@
       </label>
     </div>
 
-    <!-- Submit Button -->
+    
     <button type="submit" class="btn btn-success">Show Results</button>
   </form>
 </div>
 
-<!-- Species Adder Script -->
+
 <script>
   let speciesIndex = 1;
   function addSpecies() {
