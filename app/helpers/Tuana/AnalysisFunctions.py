@@ -1,6 +1,6 @@
 from Bio import AlignIO
 
-file_path = "HW1_TuanaDogan_alignment_file.fas"
+file_path = "aligned_fasta_final.fasta"
 
 def read_alignment(file_path):
     """
