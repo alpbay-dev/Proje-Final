@@ -5,16 +5,27 @@
     <h1 class="mb-4">Analysis Results</h1>
 
     {% if result %}
+        <!-- Aligned FASTA indir -->
+        <div class="text-center mb-4">
+            <a href="{{ url_for('static', filename='analysis_results/aligned_fasta_final.fasta') }}"
+               class="btn btn-success" download>
+                📥 Download Aligned FASTA
+            </a>
+        </div>
+
+        <!-- Her bir analiz sonucu -->
         {% for title, image_path in result.items() %}
-            <div class="card mb-5">
-                <div class="card-header">
-                    <h5 class="card-title">{{ title }}</h5>
+            {% if image_path.endswith(".png") %}
+                <div class="card mb-5">
+                    <div class="card-header">
+                        <h5 class="card-title">{{ title }}</h5>
+                    </div>
+                    <div class="card-body text-center">
+                        <img src="{{ url_for('static', filename=image_path.split('static/')[-1]) }}"
+                             alt="{{ title }}" class="img-fluid border">
+                    </div>
                 </div>
-                <div class="card-body text-center">
-                    <img src="{{ url_for('static', filename=image_path.split('static/')[-1]) }}"
-                         alt="{{ title }}" class="img-fluid border">
-                </div>
-            </div>
+            {% endif %}
         {% endfor %}
     {% else %}
         <div class="alert alert-warning" role="alert">

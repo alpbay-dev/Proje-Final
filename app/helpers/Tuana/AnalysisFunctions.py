@@ -27,44 +27,47 @@ def run_and_draw_bootstrap_tree(input_path: str, iqtree_path: str = "iqtree\iqtr
         str: Kaydedilen PNG dosyasının yolu
     """
 
-    # 1. Yol hazırlıkları
     input_path = os.path.abspath(input_path)
     work_dir = os.path.dirname(input_path)
-    contree_path = input_path + ".contree"
-    output_img = input_path + "_bootstrap_tree.png"
+    input_filename = os.path.basename(input_path)  # 👈 sadece dosya adı
+    contree_path = os.path.join(work_dir, input_filename + ".contree")  # .contree dosyası
+    output_img = os.path.join(work_dir, input_filename + "_bootstrap_tree.png")  # çıktı görseli
 
-    # 2. IQ-TREE komutunu çalıştır
+    # IQ-TREE komutu
     cmd = [
         iqtree_path,
         "-s", input_path,
         "-m", "GTR+G",
         "-nt", "AUTO",
-        "-bb", str(bootstrap)
+        "-bb", str(bootstrap),
+        "-redo"  # 🔥 önceki çıktıları silerek yeniden çalıştırır
     ]
 
-    print("▶ IQ-TREE çalıştırılıyor:", " ".join(cmd))
-    subprocess.run(cmd, cwd=work_dir, check=True)
+    print("▶ IQ-TREE komutu:", " ".join(cmd))
+    print("▶ Çalışma dizini:", work_dir)
 
-    # 3. .contree dosyası oluştu mu?
+    result = subprocess.run(cmd, cwd=work_dir, capture_output=True, text=True)
+
+    print("▶ STDOUT:\n", result.stdout)
+    print("▶ STDERR:\n", result.stderr)
+
+    if result.returncode != 0:
+        raise RuntimeError(f"IQ-TREE hata verdi! Kod: {result.returncode}\n{result.stderr}")
+
     if not os.path.exists(contree_path):
-        raise FileNotFoundError(f" .contree dosyası bulunamadı: {contree_path}")
+        raise FileNotFoundError(f".contree dosyası bulunamadı: {contree_path}")
 
-    # 4. Ağaç dosyasını oku
     tree = Phylo.read(contree_path, "newick")
 
-    # 5. Görsel olarak çiz
     fig = plt.figure(figsize=(10, 10))
     ax = fig.add_subplot(1, 1, 1)
     Phylo.draw(tree, do_show=False, axes=ax)
-
-    #  X/Y eksenlerini kaldır
     ax.set_axis_off()
 
-    # 6. Kaydet ve kapat
     plt.savefig(output_img, dpi=300, bbox_inches="tight")
     plt.close()
 
-    print(" Bootstrap destekli ağaç çizildi (eksensiz):", output_img)
+    print("✅ Ağaç başarıyla çizildi:", output_img)
     return output_img
 
 
@@ -143,7 +146,7 @@ def plot_nucleotide_diversity_heatmap(fasta_path: str, output_img: str = None):
         output_img (str): PNG olarak kaydedilecek dosya (opsiyonel)
 
     Returns:
-        pd.DataFrame: Nükleotid çeşitliliği matrisi
+        str: Kaydedilen PNG dosyasının yolu
     """
     from Bio import AlignIO
     from Bio.Phylo.TreeConstruction import DistanceCalculator
@@ -181,12 +184,6 @@ def plot_nucleotide_diversity_heatmap(fasta_path: str, output_img: str = None):
     plt.close()
     print(" Başarıyla kaydedildi.")
 
-    return df
-
-<<<<<<< HEAD
-#plot_nucleotide_diversity_heatmap(file_path)
-=======
-#plot_nucleotide_diversity_heatmap(file_path)
+    return output_img
 
 
->>>>>>> 04315c4ec119104f30d0e6d8e09ffdfa69a62891

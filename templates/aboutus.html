@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block title %}About Us - BARCODE-ON{% endblock %}
+
+{% block content %}
+<!-- Arka plan -->
+<div class="page-bg"></div>
+
+<div class="container mt-5 p-4 rounded about-card">
+    <h1 class="mb-4 text-success">About the Project</h1>
+
+    <p>
+        <strong>BARCODE-ON</strong> is a web-based bioinformatics tool developed as part of the BIO 496 course at Boğaziçi University.
+        It enables users to retrieve DNA barcode sequences from the BOLD Systems API, align them using ClustalW, and generate various analyses such as:
+    </p>
+    <ul>
+        <li>Maximum Likelihood Trees (IQ-TREE)</li>
+        <li>Minimum Spanning Networks</li>
+        <li>Nucleotide Diversity Heatmaps</li>
+    </ul>
+
+    <p>
+        The tool simplifies the barcode-based comparison of species for educational or research purposes.
+        Users simply choose species names and a DNA marker, and the platform does the rest — from fetching sequences to visualizing evolutionary relationships.
+    </p>
+
+    <h2 class="mt-5 text-success">Our Motivation</h2>
+    <p>
+        We wanted to bridge the gap between biological data and accessibility.
+        Many researchers and students struggle with command-line bioinformatics tools.
+        Our goal was to offer an intuitive interface to perform standard analyses in a few clicks, combining our interests in biology, data science, and web development.
+    </p>
+
+    <h2 class="mt-5 text-success">Meet the Team</h2>
+    <ul>
+        <li><strong>Kutlu Alp Bayır</strong> – Backend integration, sequence handling, and BOLD API support.</li>
+        <li><strong>Tuana Doğan</strong> – Data analysis functions, tree/heatmap plotting, and visualization logic.</li>
+        <li><strong>Duru Uluyol</strong> – Sequence fetching, FASTA creation, alignment pipeline and API architecture.</li>
+    </ul>
+
+    <p class="mt-4">We hope our project helps others learn and explore DNA barcode analysis with ease!</p>
+
+    <a href="{{ url_for('main.home') }}" class="btn btn-outline-secondary mt-3">← Back to Home</a>
+</div>
+{% endblock %}

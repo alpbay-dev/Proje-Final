@@ -3,8 +3,9 @@ from app import create_app
 import os
 from flask import Flask
 
-template_dir = os.path.join(os.path.dirname(__file__), 'templates')
-static_dir = os.path.join(os.path.dirname(__file__), 'static')
+base_dir = os.path.dirname(__file__)
+template_dir = os.path.join(base_dir, 'templates')
+static_dir = os.path.join(base_dir, 'app', 'static')  # 🔧 BURASI DEĞİŞTİ
 
 app = Flask(__name__, template_folder=template_dir, static_folder=static_dir)
 

@@ -3,9 +3,17 @@
 {% block title %}Home - BARCODE-ON{% endblock %}
 
 {% block content %}
-    <div class="text-center">
-        <h1 class="display-4 text-success">Welcome to BARCODE-ON</h1>
-        <p class="lead">Your partner in biodiversity alignment and DNA analysis.</p>
-        <a href="/align" class="btn btn-success btn-lg">Let's Align</a>
-    </div>
+<div class="container mt-5">
+  <div class="text-center p-5 rounded shadow home-box">
+    <h1 class="display-4 fw-bold text-success mb-3 animate__animated animate__fadeInDown">
+      Welcome to <span class="brand-name">BARCODE-ON</span>
+    </h1>
+    <p class="lead animate__animated animate__fadeInUp animate__delay-1s">
+      Your partner in biodiversity alignment and DNA analysis.
+    </p>
+    <a href="/align" class="btn btn-success btn-lg mt-4 animate__animated animate__fadeInUp animate__delay-2s">
+       Let's Align!
+    </a>
+  </div>
+</div>
 {% endblock %}
