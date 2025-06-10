@@ -101,6 +101,18 @@ def create_fasta_from_sequences(sequences, output_filepath: str, align: bool = T
     alignment = AlignIO.read(aln_path, "clustal")
     final_aligned_fasta_name = "aligned_fasta_final.fasta"
     final_aligned_filepath = os.path.join(output_dir, final_aligned_fasta_name)
+    used_ids = set()
+    for record in alignment:
+        base_id = record.id
+        new_id = base_id
+        suffix = 1
+        while new_id in used_ids:
+            new_id = f"{base_id}_{suffix}"
+            suffix += 1
+        used_ids.add(new_id)
+        record.id = new_id
+        record.name = ""
+        record.description = ""
 
     with open(final_aligned_filepath, "w") as aligned_handle:
         AlignIO.write(alignment, aligned_handle, "fasta")
