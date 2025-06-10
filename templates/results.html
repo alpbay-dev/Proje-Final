@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1 class="mb-4">Analysis Results</h1>
+
+    {% if result %}
+        {% for title, image_path in result.items() %}
+            <div class="card mb-5">
+                <div class="card-header">
+                    <h5 class="card-title">{{ title }}</h5>
+                </div>
+                <div class="card-body text-center">
+                    <img src="{{ url_for('static', filename=image_path.split('static/')[-1]) }}"
+                         alt="{{ title }}" class="img-fluid border">
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <div class="alert alert-warning" role="alert">
+            No results available.
+        </div>
+    {% endif %}
+
+    <a href="{{ url_for('main.align') }}" class="btn btn-primary mt-3">← Back to Alignment</a>
+</div>
+{% endblock %}

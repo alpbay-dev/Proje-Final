@@ -5,7 +5,7 @@ import requests
 from io import StringIO
 from Bio import SeqIO
 
-from core.sequence_processing import create_fasta_from_sequences, SequenceProcessingError
+from app.helpers.Duru.core.sequence_processing import create_fasta_from_sequences, SequenceProcessingError
 
 logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
 
