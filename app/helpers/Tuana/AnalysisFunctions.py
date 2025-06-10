@@ -183,4 +183,10 @@ def plot_nucleotide_diversity_heatmap(fasta_path: str, output_img: str = None):
 
     return df
 
+<<<<<<< HEAD
 #plot_nucleotide_diversity_heatmap(file_path)
+=======
+#plot_nucleotide_diversity_heatmap(file_path)
+
+
+>>>>>>> 04315c4ec119104f30d0e6d8e09ffdfa69a62891
