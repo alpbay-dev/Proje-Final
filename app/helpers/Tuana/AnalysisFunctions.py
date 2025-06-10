@@ -1,4 +1,8 @@
 from Bio import AlignIO
+import os
+import subprocess
+from Bio import Phylo
+import matplotlib.pyplot as plt
 
 file_path = "aligned_fasta_final.fasta"
 
@@ -9,91 +13,6 @@ def read_alignment(file_path):
     alignment = AlignIO.read(file_path, "fasta")
     return alignment
 
-from Bio import Phylo
-from Bio.Phylo.TreeConstruction import DistanceCalculator, DistanceTreeConstructor
-import matplotlib.pyplot as plt
-
-def build_nj_tree(input_path: str) -> str:
-    from Bio import AlignIO, Phylo
-    from Bio.Phylo.TreeConstruction import DistanceCalculator, DistanceTreeConstructor
-    import matplotlib.pyplot as plt
-    import os
-
-    # 1. Alignment oku
-    aln = AlignIO.read(input_path, "fasta")
-
-    # 2. Mesafe matrisi ve NJ ağacı
-    calculator = DistanceCalculator("identity")
-    dm = calculator.get_distance(aln)
-    constructor = DistanceTreeConstructor()
-    tree = constructor.nj(dm)
-
-    # 3. İç düğümlerde isim olmasın
-    for clade in tree.get_nonterminals():
-        clade.name = ""
-
-    # 4. Çizim için eksensiz figür oluştur
-    fig = plt.figure(figsize=(10, 8))
-    ax = fig.add_subplot(1, 1, 1)
-    Phylo.draw(tree, do_show=False, axes=ax)
-    ax.set_axis_off()  # 🔥 X/Y eksenlerini kaldır
-
-    # 5. Kaydet
-    output_path = input_path + "_nj_tree.png"
-    plt.savefig(output_path, bbox_inches="tight", dpi=300)
-    plt.close()
-
-    print(f" NJ ağacı çizildi (eksensiz): {output_path}")
-    return output_path
-
-
-#build_nj_tree(file_path)
-
-
-def build_mp_tree(input_path: str) -> str:
-    from Bio import AlignIO, Phylo
-    from Bio.Phylo.TreeConstruction import DistanceCalculator, DistanceTreeConstructor
-    from Bio.Phylo.TreeConstruction import ParsimonyScorer, NNITreeSearcher, ParsimonyTreeConstructor
-    import matplotlib.pyplot as plt
-    import os
-
-    # 1. Alignment oku
-    aln = AlignIO.read(input_path, "fasta")
-
-    # 2. Başlangıç ağacı için mesafe matrisi ve UPGMA ağacı oluştur
-    calculator = DistanceCalculator("identity")
-    dm = calculator.get_distance(aln)
-    upgma_tree = DistanceTreeConstructor().upgma(dm)
-
-    # 3. Parsimony ağacı oluştur
-    scorer = ParsimonyScorer()
-    searcher = NNITreeSearcher(scorer)
-    mp_tree = ParsimonyTreeConstructor(searcher, upgma_tree).build_tree(aln)
-
-    # 4. İç düğüm isimlerini kaldır
-    for clade in mp_tree.get_nonterminals():
-        clade.name = ""
-
-    # 5. Eksensiz çizim ve kayıt
-    fig = plt.figure(figsize=(10, 8))
-    ax = fig.add_subplot(1, 1, 1)
-    Phylo.draw(mp_tree, do_show=False, axes=ax)
-    ax.set_axis_off()  # 👈 Ekseni kaldır
-
-    # 6. Kaydet
-    output_path = input_path + "_mp_tree.png"
-    plt.savefig(output_path, bbox_inches="tight", dpi=300)
-    plt.close()
-
-    print(f" MP ağacı çizildi (eksensiz): {output_path}")
-    return output_path
-
-#build_mp_tree(file_path)
-
-import os
-import subprocess
-from Bio import Phylo
-import matplotlib.pyplot as plt
 
 def run_and_draw_bootstrap_tree(input_path: str, iqtree_path: str = "iqtree\iqtree3.exe", bootstrap: int = 1000) -> str:
     """
@@ -107,10 +26,6 @@ def run_and_draw_bootstrap_tree(input_path: str, iqtree_path: str = "iqtree\iqtr
     Returns:
         str: Kaydedilen PNG dosyasının yolu
     """
-    import os
-    import subprocess
-    from Bio import Phylo
-    import matplotlib.pyplot as plt
 
     # 1. Yol hazırlıkları
     input_path = os.path.abspath(input_path)
@@ -268,12 +183,4 @@ def plot_nucleotide_diversity_heatmap(fasta_path: str, output_img: str = None):
 
     return df
 
-
-
-
-
-
-
 #plot_nucleotide_diversity_heatmap(file_path)
-
-

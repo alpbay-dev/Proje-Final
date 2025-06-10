@@ -25,6 +25,7 @@ def load_clustalw_path_from_config(config_path: str = "config.json") -> str:
     return clustalw_path
 
 def create_fasta_from_sequences(sequences, output_filepath: str, align: bool = True) -> str:
+    print(">>> create_fasta_from_sequences() fonksiyonu çalıştı")
     if not sequences:
         raise SequenceProcessingError("No sequences provided to create FASTA file.")
 
