@@ -6,7 +6,6 @@
 <div class="container mt-4">
     <h1 class="mb-4">Analysis Results</h1>
 
-    <!-- Uyarılar (Eksik sekans vs.) -->
     {% if warnings %}
         <div class="alert alert-warning">
             <h5 class="mb-2">⚠️ Some Warnings:</h5>
@@ -18,7 +17,6 @@
         </div>
     {% endif %}
 
-    <!-- FASTA Dosyası -->
     {% if result and result["Aligned FASTA File"] %}
         <div class="text-center mb-4">
             <a href="{{ result['Aligned FASTA File'] }}" class="btn btn-success" download>
@@ -31,7 +29,6 @@
         </div>
     {% endif %}
 
-    <!-- Analiz Sonuçları -->
     {% if result %}
         {% for title, image_path in result.items() %}
             {% if image_path.endswith(".png") %}
@@ -46,7 +43,7 @@
                                  alt="{{ title }}" class="img-fluid border mb-3"
                                  onerror="this.style.display='none'; document.getElementById('error-{{ loop.index }}').style.display='block';">
 
-                            <!-- İndirme Butonu -->
+
                             <a href="{{ image_path }}" class="btn btn-outline-success" download>
                                 📥 Download Image
                             </a>
@@ -70,7 +67,6 @@
         </div>
     {% endif %}
 
-    <!-- Genel Hata -->
     {% if error %}
         <div class="alert alert-danger mt-4">
             {{ error }}

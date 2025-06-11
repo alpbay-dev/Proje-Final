@@ -1,4 +1,4 @@
-/* General layout */
+
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.6;
@@ -7,14 +7,14 @@ body {
   padding-bottom: 50px;
 }
 
-/* Header */
+
 .navbar-brand {
   font-size: 1.8rem;
   font-weight: bold;
   color: #198754 !important; /* Bootstrap green */
 }
 
-/* Form controls */
+
 .form-control,
 .form-select {
   border-radius: 0.375rem;
@@ -29,13 +29,13 @@ body {
   box-shadow: 0 0 0 0.2rem rgba(25, 135, 84, 0.25);
 }
 
-/* Labels and sections */
+
 label {
   font-weight: 600;
   margin-bottom: 0.4rem;
 }
 
-/* Buttons */
+
 .btn-success {
   background-color: #198754;
   border-color: #198754;
@@ -57,7 +57,7 @@ label {
   color: white;
 }
 
-/* Cards, sections */
+
 .card,
 .section-box {
   background-color: #ffffff;
@@ -68,12 +68,12 @@ label {
   margin-bottom: 2rem;
 }
 
-/* Species input section */
+
 #species-section input {
   margin-bottom: 0.5rem;
 }
 
-/* Night mode overrides */
+
 body.dark-mode {
   background-color: #121212;
   color: #e0e0e0;

@@ -74,7 +74,6 @@
     localStorage.setItem("nightMode", isDark);
     document.querySelector('.mode-toggle').innerText = isDark ? '☀️ Light Mode' : '🌙 Dark Mode';
 
-    // Link rengini değiştir
     const aboutLink = document.getElementById("aboutLink");
     if (aboutLink) {
       aboutLink.classList.toggle("text-light", isDark);
@@ -89,7 +88,6 @@
       document.querySelector('.mode-toggle').innerText = '☀️ Light Mode';
     }
 
-    // Load-time link rengi ayarı
     const isDark = document.body.classList.contains("dark-mode");
     const aboutLink = document.getElementById("aboutLink");
     if (aboutLink) {

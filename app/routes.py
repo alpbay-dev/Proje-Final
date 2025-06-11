@@ -1,5 +1,3 @@
-# app/routes.py
-
 from flask import Blueprint, render_template, request, url_for
 import os
 import shutil
@@ -88,7 +86,6 @@ def align():
             shutil.copyfile(image_path, static_path)
             results[title] = url_for("static", filename=f"analysis_results/{filename}")
 
-        # Analizler
         if "ml" in selected_analyses:
             try:
                 ml_path = run_and_draw_bootstrap_tree(
@@ -99,7 +96,6 @@ def align():
             except Exception as e:
                 warnings.append(f"Maximum Likelihood Tree failed: {e}")
 
-        # Aligned FASTA her zaman eklenecek
         try:
             aligned_fasta_filename = os.path.basename(final_fasta)
             static_aligned_path = os.path.join(STATIC_IMG_DIR, aligned_fasta_filename)
