@@ -1,19 +1,38 @@
 {% extends "layout.html" %}
 
+{% block title %}Results - BARCODE-ON{% endblock %}
+
 {% block content %}
 <div class="container mt-4">
     <h1 class="mb-4">Analysis Results</h1>
 
-    {% if result %}
-        <!-- Aligned FASTA indir -->
+    <!-- Uyarılar (Eksik sekans vs.) -->
+    {% if warnings %}
+        <div class="alert alert-warning">
+            <h5 class="mb-2">⚠️ Some Warnings:</h5>
+            <ul class="mb-0">
+                {% for message in warnings %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+
+    <!-- FASTA Dosyası -->
+    {% if result and result["Aligned FASTA File"] %}
         <div class="text-center mb-4">
-            <a href="{{ url_for('static', filename='analysis_results/aligned_fasta_final.fasta') }}"
-               class="btn btn-success" download>
+            <a href="{{ result['Aligned FASTA File'] }}" class="btn btn-success" download>
                 📥 Download Aligned FASTA
             </a>
         </div>
+    {% else %}
+        <div class="alert alert-danger" role="alert">
+            Aligned FASTA file could not be found.
+        </div>
+    {% endif %}
 
-        <!-- Her bir analiz sonucu -->
+    <!-- Analiz Sonuçları -->
+    {% if result %}
         {% for title, image_path in result.items() %}
             {% if image_path.endswith(".png") %}
                 <div class="card mb-5">
@@ -21,8 +40,26 @@
                         <h5 class="card-title">{{ title }}</h5>
                     </div>
                     <div class="card-body text-center">
-                        <img src="{{ url_for('static', filename=image_path.split('static/')[-1]) }}"
-                             alt="{{ title }}" class="img-fluid border">
+
+                        {% if image_path %}
+                            <img src="{{ image_path }}"
+                                 alt="{{ title }}" class="img-fluid border mb-3"
+                                 onerror="this.style.display='none'; document.getElementById('error-{{ loop.index }}').style.display='block';">
+
+                            <!-- İndirme Butonu -->
+                            <a href="{{ image_path }}" class="btn btn-outline-success" download>
+                                📥 Download Image
+                            </a>
+                        {% else %}
+                            <div class="alert alert-warning mt-3">
+                                Unsupported result file type: {{ image_path }}
+                            </div>
+                        {% endif %}
+
+                        <!-- Hata Mesajı (Görsel Yüklenemezse) -->
+                        <div id="error-{{ loop.index }}" class="alert alert-danger mt-3" style="display: none;">
+                            Unable to display result image for: {{ title }}
+                        </div>
                     </div>
                 </div>
             {% endif %}
@@ -30,6 +67,13 @@
     {% else %}
         <div class="alert alert-warning" role="alert">
             No results available.
+        </div>
+    {% endif %}
+
+    <!-- Genel Hata -->
+    {% if error %}
+        <div class="alert alert-danger mt-4">
+            {{ error }}
         </div>
     {% endif %}
 

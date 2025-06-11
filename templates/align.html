@@ -6,7 +6,7 @@
 <div class="container mt-5">
   <h2 class="text-success mb-4">DNA Alignment Form</h2>
 
-  <!-- Yükleme animasyonu -->
+  <!-- Yükleme Animasyonu -->
   <div id="loadingSpinner" class="text-center my-5" style="display: none;">
     <div class="spinner-border text-success" style="width: 4rem; height: 4rem;" role="status">
       <span class="visually-hidden">Loading...</span>
@@ -14,7 +14,14 @@
     <p class="mt-3 fs-5">Please wait, processing your request...</p>
   </div>
 
-  <!-- Form başlangıcı -->
+  <!-- Hata mesajı -->
+  {% if error %}
+  <div class="alert alert-danger mt-3" id="errorMessage">
+    {{ error }}
+  </div>
+  {% endif %}
+
+  <!-- Form -->
   <form method="POST" action="/align" id="alignmentForm">
 
     <!-- DNA Marker -->
@@ -22,34 +29,20 @@
       <label for="dnaType" class="form-label">Select DNA Marker</label>
       <select class="form-select" id="dnaType" name="dna_type" required>
         <option value="">Choose a marker</option>
-        <option value="COI-5P">COI-5P</option>
-        <option value="COI-3P">COI-3P</option>
-        <option value="COI">COI (broad)</option>
-        <option value="16S">16S rRNA</option>
-        <option value="18S">18S rRNA</option>
-        <option value="12S">12S rRNA</option>
-        <option value="ITS">ITS</option>
-        <option value="rbcL">rbcL</option>
-        <option value="matK">matK</option>
-        <option value="CYTB">CYTB</option>
-        <option value="ND2">ND2</option>
-        <option value="ND4">ND4</option>
-        <option value="trnH-psbA">trnH-psbA</option>
-        <option value="COII">COII</option>
-        <option value="COIII">COIII</option>
-        <option value="ATP6">ATP6</option>
-        <option value="ATP8">ATP8</option>
+        {% for marker in ['COI-5P','COI-3P','COI','16S','18S','12S','ITS','rbcL','matK','CYTB','ND2','ND4','trnH-psbA','COII','COIII','ATP6','ATP8'] %}
+        <option value="{{ marker }}">{{ marker }}</option>
+        {% endfor %}
       </select>
     </div>
 
-    <!-- Species input -->
+    <!-- Species Input -->
     <div id="species-section" class="mb-3">
       <label for="species-0" class="form-label">Species Name</label>
       <input type="text" name="species[]" class="form-control mb-2" id="species-0" placeholder="Add species name" required>
     </div>
     <button type="button" class="btn btn-sm btn-outline-success mb-4" onclick="addSpecies()">Add Species</button>
 
-    <!-- Sequence count -->
+    <!-- Sequence Count -->
     <div class="mb-3">
       <label for="sequenceCount" class="form-label">Number of sequences per species</label>
       <input type="number" class="form-control" id="sequenceCount" name="sequence_count" min="1" required>
@@ -57,7 +50,7 @@
 
     <!-- Analysis Options -->
     <div class="form-group">
-      <label>Select analyses to perform:</label><br>
+      <label class="form-label">Select analyses to perform:</label><br>
       <div class="form-check">
         <input class="form-check-input" type="checkbox" name="analysis" value="ml" id="checkML">
         <label class="form-check-label" for="checkML">Maximum Likelihood (IQ-TREE)</label>
@@ -72,13 +65,15 @@
       </div>
     </div>
 
-    <!-- Submit button -->
+    <!-- Submit -->
     <button type="submit" class="btn btn-success mt-4">Show Results</button>
   </form>
 </div>
 
+<!-- JavaScript -->
 <script>
   let speciesIndex = 1;
+
   function addSpecies() {
     const container = document.getElementById("species-section");
     const newInput = document.createElement("input");
@@ -91,10 +86,21 @@
     speciesIndex++;
   }
 
-  // Gönderim sırasında formu gizle, spinner'ı göster
+  // Form gönderilirken spinner'ı göster
   document.getElementById("alignmentForm").addEventListener("submit", function () {
     document.getElementById("alignmentForm").style.display = "none";
+    const errorBox = document.getElementById("errorMessage");
+    if (errorBox) errorBox.style.display = "none";
     document.getElementById("loadingSpinner").style.display = "block";
   });
+
+  // Eğer sayfa hata ile yüklendiyse spinner'ı gizle
+  window.onload = function () {
+    const errorBox = document.getElementById("errorMessage");
+    if (errorBox) {
+      document.getElementById("alignmentForm").style.display = "block";
+      document.getElementById("loadingSpinner").style.display = "none";
+    }
+  };
 </script>
 {% endblock %}

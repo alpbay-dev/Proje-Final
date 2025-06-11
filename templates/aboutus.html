@@ -40,6 +40,11 @@
 
     <p class="mt-4">We hope our project helps others learn and explore DNA barcode analysis with ease!</p>
 
-    <a href="{{ url_for('main.home') }}" class="btn btn-outline-secondary mt-3">← Back to Home</a>
+    <div class="d-flex flex-column flex-md-row justify-content-between align-items-center mt-4 gap-3">
+        <a href="{{ url_for('main.home') }}" class="btn btn-outline-secondary">← Back to Home</a>
+        <a href="https://github.com/alpbay-dev/Proje-Final" class="btn btn-outline-success" target="_blank">
+            🌐 View on GitHub
+        </a>
+    </div>
 </div>
 {% endblock %}

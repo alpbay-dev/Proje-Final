@@ -2,7 +2,7 @@ IQ-TREE 3.0.1 built May  5 2025
 
 Input file name: C:\Users\SARP\Desktop\Alp\Proje-Final\app\helpers\Duru\data\temp_fasta\aligned_fasta_final.fasta
 Type of analysis: tree reconstruction + ultrafast bootstrap (1000 replicates)
-Random seed number: 372557
+Random seed number: 439456
 
 REFERENCES
 ----------
@@ -27,11 +27,11 @@ https://doi.org/10.1093/molbev/msx281
 SEQUENCE ALIGNMENT
 ------------------
 
-Input data: 16 sequences with 1595 nucleotide sites
-Number of constant sites: 571 (= 35.7994% of all sites)
-Number of invariant (constant or ambiguous constant) sites: 571 (= 35.7994% of all sites)
-Number of parsimony informative sites: 623
-Number of distinct site patterns: 851
+Input data: 5 sequences with 743 nucleotide sites
+Number of constant sites: 672 (= 90.4441% of all sites)
+Number of invariant (constant or ambiguous constant) sites: 672 (= 90.4441% of all sites)
+Number of parsimony informative sites: 52
+Number of distinct site patterns: 41
 
 SUBSTITUTION PROCESS
 --------------------
@@ -40,145 +40,101 @@ Model of substitution: GTR+F+G4
 
 Rate parameter R:
 
-  A-C: 6.2647
-  A-G: 13.4649
-  A-T: 8.2695
-  C-G: 4.8197
-  C-T: 22.9919
+  A-C: 0.0001
+  A-G: 100.0000
+  A-T: 19.7527
+  C-G: 0.0001
+  C-T: 51.4488
   G-T: 1.0000
 
 State frequencies: (empirical counts from alignment)
 
-  pi(A) = 0.2702
-  pi(C) = 0.2636
-  pi(G) = 0.1763
-  pi(T) = 0.2899
+  pi(A) = 0.2823
+  pi(C) = 0.2522
+  pi(G) = 0.1568
+  pi(T) = 0.3086
 
 Rate matrix Q:
 
-  A   -0.8523    0.2192     0.315    0.3181
-  C    0.2247    -1.222    0.1127    0.8845
-  G    0.4829    0.1686     -0.69   0.03847
-  T    0.2966    0.8045   0.02339    -1.124
+  A    -1.067  1.236e-06    0.7686    0.2988
+  C  1.384e-06   -0.7782  7.686e-07    0.7782
+  G     1.384  1.236e-06    -1.399   0.01513
+  T    0.2733    0.6359  0.007686   -0.9169
 
 Model of rate heterogeneity: Gamma with 4 categories
-Gamma shape alpha: 1.634
+Gamma shape alpha: 1.193
 
  Category  Relative_rate  Proportion
-  1         0.2453         0.25
-  2         0.6094         0.25
-  3         1.057          0.25
-  4         2.088          0.25
+  1         0.1738         0.25
+  2         0.528          0.25
+  3         1.026          0.25
+  4         2.272          0.25
 Relative rates are computed as MEAN of the portion of the Gamma distribution falling in the category.
 
 MAXIMUM LIKELIHOOD TREE
 -----------------------
 
-Log-likelihood of the tree: -8341.7904 (s.e. 140.4116)
-Unconstrained log-likelihood (without tree): -8978.1814
-Number of free parameters (#branches + #model parameters): 38
-Akaike information criterion (AIC) score: 16759.5808
-Corrected Akaike information criterion (AICc) score: 16761.4857
-Bayesian information criterion (BIC) score: 16963.8167
+Log-likelihood of the tree: -1231.4594 (s.e. 22.2852)
+Unconstrained log-likelihood (without tree): -1669.8097
+Number of free parameters (#branches + #model parameters): 16
+Akaike information criterion (AIC) score: 2494.9189
+Corrected Akaike information criterion (AICc) score: 2495.6682
+Bayesian information criterion (BIC) score: 2568.6900
 
-Total tree length (sum of branch lengths): 18.8953
-Sum of internal branch lengths: 6.5616 (34.7260% of tree length)
+Total tree length (sum of branch lengths): 1.6807
+Sum of internal branch lengths: 1.6566 (98.5663% of tree length)
 
-WARNING: 1 near-zero internal branches (<0.0006) should be treated with caution
+WARNING: 1 near-zero internal branches (<0.0013) should be treated with caution
          Such branches are denoted by '**' in the figure below
 
-NOTE: Tree is UNROOTED although outgroup taxon 'Lemur_catta_COI-5P_ABRMM281-07' is drawn at root
+NOTE: Tree is UNROOTED although outgroup taxon 'Vulpes_vulpes_COI-5P_ZSILG125-' is drawn at root
 Numbers in parentheses are  ultrafast bootstrap support (%)
 
-+**Lemur_catta_COI-5P_ABRMM281-07
++**Vulpes_vulpes_COI-5P_ZSILG125-
 |
-+**Lemur_catta_COI-5P_GBMA15280-1
++**Vulpes_vulpes_COI-5P_ZSILG122-
 |
-|  +**Lemur_catta_COI-5P_GBMTG269-16
-+**| (57)
-   |           +--homo_sapiens_COI-5P_GBHS35026-
-   |        +--| (55)
-   |        |  +**homo_sapiens_COI-5P_GBHS33152-
-   |     +--| (61)
-   |     |  +**homo_sapiens_COI-5P_GBHS2724-0
-   |  +--| (54)
-   |  |  |       +**Vulpes_vulpes_COI-5P_ZSILG468-
-   |  |  +-------| (88)
-   |  |          |              +--Lemur_catta_COI-5P_GBMTG269-16_1
-   |  |          |          +---| (72)
-   |  |          |          |   +--------------------------------homo_sapiens_COI-5P_CYTC699-12
-   |  |          +----------| (81)
-   |  |                     +-------------------------Syzygium_aromaticum_COI-5P_GBV
-   +--| (96)
-      |  +**Vulpes_vulpes_COI-5P_GBMA17234
-      +--| (73)
-         |  +**Vulpes_vulpes_COI-5P_GBMA19962
-         +--| (55)
-            |  +--Vulpes_vulpes_COI-5P_MPBM074-1
-            +--| (45)
-               |                    +**Syzygium_aromaticum_COI-5P_GBI
-               |        +-----------| (91)
-               |        |           +--Syzygium_aromaticum_COI-5P_GBI_1
-               +--------| (65)
-                        +-----------------------------Syzygium_aromaticum_COI-5P_API
+|  +**Vulpes_vulpes_COI-5P_ZSILG469-
++**| (26)
+   |                                                          +--Vulpes_vulpes_COI-5P_GBMA17232
+   +----------------------------------------------------------| (100)
+                                                              +**Vulpes_vulpes_COI-5P_GBMA1928-
 
 Tree in newick format:
 
-(Lemur_catta_COI-5P_ABRMM281-07:0.0000010000,Lemur_catta_COI-5P_GBMA15280-1:0.0000010000,(Lemur_catta_COI-5P_GBMTG269-16:0.0000020535,((((homo_sapiens_COI-5P_GBHS35026-:0.0006401476,homo_sapiens_COI-5P_GBHS33152-:0.0000010000)55:0.0010299639,homo_sapiens_COI-5P_GBHS2724-0:0.0000026023)61:0.1311085178,(Vulpes_vulpes_COI-5P_ZSILG468-:0.0000023991,((Lemur_catta_COI-5P_GBMTG269-16_1:0.3095983933,homo_sapiens_COI-5P_CYTC699-12:4.4503499173)72:0.5981046149,Syzygium_aromaticum_COI-5P_GBV:3.5121161455)81:1.5628282790)88:1.0860273120)54:0.0369896535,(Vulpes_vulpes_COI-5P_GBMA17234:0.0000020551,(Vulpes_vulpes_COI-5P_GBMA19962:0.0000010000,(Vulpes_vulpes_COI-5P_MPBM074-1:0.0020816449,((Syzygium_aromaticum_COI-5P_GBI:0.0000020586,Syzygium_aromaticum_COI-5P_GBI_1:0.0017231704)91:1.6721033210,Syzygium_aromaticum_COI-5P_API:4.0572075444)65:1.1987256570)45:0.0024046532)55:0.0014551309)73:0.1492100301)96:0.1215964482)57:0.0000010000);
+(Vulpes_vulpes_COI-5P_ZSILG125-:0.0000022441,Vulpes_vulpes_COI-5P_ZSILG122-:0.0000010000,(Vulpes_vulpes_COI-5P_ZSILG469-:0.0000010000,(Vulpes_vulpes_COI-5P_GBMA17232:0.0240892665,Vulpes_vulpes_COI-5P_GBMA1928-:0.0000023230)100:1.6565524290)26:0.0000023321);
 
 CONSENSUS TREE
 --------------
 
 Consensus tree is constructed from 1000 bootstrap trees
-Log-likelihood of consensus tree: -8341.756215
-Robinson-Foulds distance between ML tree and consensus tree: 0
+Log-likelihood of consensus tree: -1231.459778
+Robinson-Foulds distance between ML tree and consensus tree: 2
 
 Branches with support >0.000000% are kept (extended consensus)
 Branch lengths are optimized by maximum likelihood on original alignment
 Numbers in parentheses are bootstrap supports (%)
 
-+--Lemur_catta_COI-5P_ABRMM281-07
++--Vulpes_vulpes_COI-5P_ZSILG125-
 |
-+--Lemur_catta_COI-5P_GBMA15280-1
+|  +--Vulpes_vulpes_COI-5P_ZSILG122-
++--| (46)
+|  +--Vulpes_vulpes_COI-5P_ZSILG469-
 |
-|  +--Lemur_catta_COI-5P_GBMTG269-16
-+--| (57)
-   |           +--homo_sapiens_COI-5P_GBHS35026-
-   |        +--| (55)
-   |        |  +--homo_sapiens_COI-5P_GBHS33152-
-   |     +--| (61)
-   |     |  +--homo_sapiens_COI-5P_GBHS2724-0
-   |  +--| (54)
-   |  |  |       +--Vulpes_vulpes_COI-5P_ZSILG468-
-   |  |  +-------| (88)
-   |  |          |              +--Lemur_catta_COI-5P_GBMTG269-16_1
-   |  |          |          +---| (72)
-   |  |          |          |   +--------------------------------homo_sapiens_COI-5P_CYTC699-12
-   |  |          +----------| (81)
-   |  |                     +-------------------------Syzygium_aromaticum_COI-5P_GBV
-   +--| (96)
-      |  +--Vulpes_vulpes_COI-5P_GBMA17234
-      +--| (73)
-         |  +--Vulpes_vulpes_COI-5P_GBMA19962
-         +--| (55)
-            |  +--Vulpes_vulpes_COI-5P_MPBM074-1
-            +--| (45)
-               |                   +--Syzygium_aromaticum_COI-5P_GBI
-               |       +-----------| (91)
-               |       |           +--Syzygium_aromaticum_COI-5P_GBI_1
-               +-------| (65)
-                       +-----------------------------Syzygium_aromaticum_COI-5P_API
+|                                                          +--Vulpes_vulpes_COI-5P_GBMA17232
++----------------------------------------------------------| (100)
+                                                           +--Vulpes_vulpes_COI-5P_GBMA1928-
 
 
 Consensus tree in newick format: 
 
-(Lemur_catta_COI-5P_ABRMM281-07:0.0000022234,Lemur_catta_COI-5P_GBMA15280-1:0.0000022234,(Lemur_catta_COI-5P_GBMTG269-16:0.0000028662,((((homo_sapiens_COI-5P_GBHS35026-:0.0006405438,homo_sapiens_COI-5P_GBHS33152-:0.0000022234)55:0.0010301269,homo_sapiens_COI-5P_GBHS2724-0:0.0000022234)61:0.1278445101,(Vulpes_vulpes_COI-5P_ZSILG468-:0.0000026974,((Lemur_catta_COI-5P_GBMTG269-16_1:0.3083454021,homo_sapiens_COI-5P_CYTC699-12:4.4479700175)72:0.6012224232,Syzygium_aromaticum_COI-5P_GBV:3.5081383838)81:1.5637822524)88:1.0915614720)54:0.0402146615,(Vulpes_vulpes_COI-5P_GBMA17234:0.0000028438,(Vulpes_vulpes_COI-5P_GBMA19962:0.0000022234,(Vulpes_vulpes_COI-5P_MPBM074-1:0.0000021511,((Syzygium_aromaticum_COI-5P_GBI:0.0000029272,Syzygium_aromaticum_COI-5P_GBI_1:0.0017215120)91:1.7003591231,Syzygium_aromaticum_COI-5P_API:4.0615715743)65:1.1700499867)45:0.0044362323)55:0.0014542450)73:0.1491878811)96:0.1216339785)57:0.0000022234);
+(Vulpes_vulpes_COI-5P_ZSILG125-:0.0000023156,(Vulpes_vulpes_COI-5P_ZSILG122-:0.0000023183,Vulpes_vulpes_COI-5P_ZSILG469-:0.0000023156)46:0.0000023183,(Vulpes_vulpes_COI-5P_GBMA17232:0.0240907811,Vulpes_vulpes_COI-5P_GBMA1928-:0.0000025721)100:1.6565577440);
 
 ALISIM COMMAND
 --------------
 To simulate an alignment of the same length as the original alignment, using the tree and model parameters estimated from this analysis, you can use the following command:
 
---alisim simulated_MSA -t C:\Users\SARP\Desktop\Alp\Proje-Final\app\helpers\Duru\data\temp_fasta\aligned_fasta_final.fasta.treefile -m "GTR{6.2647,13.4649,8.2695,4.81972,22.9919}+F{0.27022,0.263645,0.176255,0.28988}+G4{1.63392}" --length 1595
+--alisim simulated_MSA -t C:\Users\SARP\Desktop\Alp\Proje-Final\app\helpers\Duru\data\temp_fasta\aligned_fasta_final.fasta.treefile -m "GTR{0.0001,100,19.7527,0.0001,51.4488}+F{0.282338,0.252192,0.156824,0.308646}+G4{1.19333}" --length 743
 
 To mimic the alignment used to produce this analysis, i.e. simulate an alignment of the same length as the original alignment, using the tree and model parameters estimated from this analysis *and* copying the same gap positions as the original alignment, you can use the following command:
 
@@ -193,7 +149,7 @@ For more information on using AliSim, please visit: www.iqtree.org/doc/AliSim
 TIME STAMP
 ----------
 
-Date and time: Wed Jun 11 00:51:28 2025
-Total CPU time used: 44.96875 seconds (0h:0m:44s)
-Total wall-clock time used: 23.1013997 seconds (0h:0m:23s)
+Date and time: Wed Jun 11 12:52:27 2025
+Total CPU time used: 31.21875 seconds (0h:0m:31s)
+Total wall-clock time used: 18.7744499 seconds (0h:0m:18s)
 
